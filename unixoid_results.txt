@@ -1,0 +1,68 @@
+........F.FF.F.F.
+
+Failures:
+
+  1) Unixoid test 8b. should have the count of env vars in my/public/files/t-vars.count
+     Failure/Error: expect(File.read('my/public/files/t-vars.count')).to match(/^Overall count:\s+\d+\s*$/i)
+       expected "Overall count:5\n" to match /^Overall count:\s+\d+\s*$/i
+       Diff:
+       @@ -1,2 +1,2 @@
+       -/^Overall count:\s+\d+\s*$/i
+       +Overall count:5
+     # ./unixoid_spec.rb:41:in `block (2 levels) in <top (required)>'
+
+  2) Unixoid test 10. should only allow the owner to change into my/private/files
+     Failure/Error: expect(permissions & 0000010).to eq(0)
+       
+       expected: 0
+            got: 8
+       
+       (compared using ==)
+     # ./unixoid_spec.rb:54:in `block (2 levels) in <top (required)>'
+
+  3) Unixoid test 11. should have rw permissions for all users on my/public/files/t-vars.count
+     Failure/Error: expect(t_vars_permissions & 0666).to eq(0666)
+       
+       expected: 438
+            got: 420
+       
+       (compared using ==)
+     # ./unixoid_spec.rb:60:in `block (2 levels) in <top (required)>'
+
+  4) Unixoid test 12b. should have the count of text files in my/public/files/text-files-count.txt
+     Failure/Error: expect(File.read('my/public/files/text-files-count.txt')).to match(/^\s*\d{2,6}\s*$/)
+       expected "Overall Count Text Files Home Directory (Recursively):     1018\n" to match /^\s*\d{2,6}\s*$/
+       Diff:
+       @@ -1,2 +1,2 @@
+       -/^\s*\d{2,6}\s*$/
+       +Overall Count Text Files Home Directory (Recursively):     1018
+     # ./unixoid_spec.rb:68:in `block (2 levels) in <top (required)>'
+
+  5) Unixoid test 13b. should have the the first three env vars in my/private/files/first-three-env.txt
+     Failure/Error: expect(lines.sort).to eq lines
+       
+       expected: ["First 3 env variables sorted alphabetically:\n", "Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.qb5KLAjbgM/Render\n", "DAY=Monday\n", "GEM_HOME=/Users/andygnewman/.rvm/gems/ruby-2.0.0-p594\n"]
+            got: ["Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.qb5KLAjbgM/Render\n", "DAY=Monday\n", "First 3 env variables sorted alphabetically:\n", "GEM_HOME=/Users/andygnewman/.rvm/gems/ruby-2.0.0-p594\n"]
+       
+       (compared using ==)
+       
+       Diff:
+       
+       @@ -1,5 +1,5 @@
+       -First 3 env variables sorted alphabetically:\n
+        Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.qb5KLAjbgM/Render\n
+        DAY=Monday\n
+       +First 3 env variables sorted alphabetically:\n
+        GEM_HOME=/Users/andygnewman/.rvm/gems/ruby-2.0.0-p594\n
+     # ./unixoid_spec.rb:77:in `block (2 levels) in <top (required)>'
+
+Finished in 0.05614 seconds (files took 0.26995 seconds to load)
+17 examples, 5 failures
+
+Failed examples:
+
+rspec ./unixoid_spec.rb:40 # Unixoid test 8b. should have the count of env vars in my/public/files/t-vars.count
+rspec ./unixoid_spec.rb:50 # Unixoid test 10. should only allow the owner to change into my/private/files
+rspec ./unixoid_spec.rb:58 # Unixoid test 11. should have rw permissions for all users on my/public/files/t-vars.count
+rspec ./unixoid_spec.rb:67 # Unixoid test 12b. should have the count of text files in my/public/files/text-files-count.txt
+rspec ./unixoid_spec.rb:75 # Unixoid test 13b. should have the the first three env vars in my/private/files/first-three-env.txt
